@@ -2,3 +2,7 @@ img {
 	height: 400px;
 	width: 300px;
 }
+
+div {
+	padding: 1em;
+}
