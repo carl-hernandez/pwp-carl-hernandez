@@ -6,3 +6,8 @@ img {
 div {
 	padding: 1em;
 }
+
+.wireFrames img {
+	height: 400px;
+	width: 500px;
+}
