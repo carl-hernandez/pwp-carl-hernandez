@@ -109,31 +109,59 @@
 <!--This is the contact section-->
 
 <div class="container-fluid">
-    <form action="http://localhost:4200/apis" id="contact" method="post"></form>
+    <form action="http://localhost:4200/apis" id="contact" method="post" novalidate>
     <h1 class="text-center">Contact</h1>
     <div class="row">
         <div class="col">
+
             <div class="form-group">
-                <input type="text" class="form-control" id="name" placeholder="Your Name" name="name">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                    </div>
+                    <input class="form-control" id="name" placeholder="Your Name" name="name" type="text" >
+                </div>
             </div>
+
             <div class="form-group">
-                <input type="text" class="form-control" id="email" placeholder="Your Email" name="email">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                    </div>
+                    <input type="text" class="form-control" id="email" placeholder="Your Email" name="email">
+                </div>
             </div>
+
             <div class="form-group">
-                <input type="text" class="form-control" id="phone" placeholder="Your Phone Number" name="phone">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-pencil"></i></span>
+                    </div>
+                <input type="text" class="form-control" id="subject" placeholder="Phone Number" name="phoneNumber">
+                </div>
             </div>
+
         </div>
         <div class="col">
+
+
             <div class="form-group">
-                <textarea class="form-control" id="message" placeholder="Your Message" name="message" rows="6"></textarea>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-pencil"></i></span>
+                    </div>
+                <textarea class="form-control" id="message" placeholder="Your Message" name="message" rows="5"></textarea>
+                </div>
             </div>
         </div>
+
     </div>
     <div class="row">
         <div class="col text-center">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>
+</form>
 </div>
 
 <div id="output-area"></div>
