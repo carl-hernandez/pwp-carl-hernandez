@@ -1,0 +1,5 @@
+.jumbotron {
+	padding-bottom: 1rem;
+	background-image: url('sunset-cropped.jpg');
+	background-size: cover ;
+}

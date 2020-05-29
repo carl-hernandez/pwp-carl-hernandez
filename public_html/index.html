@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Carl Hernandez</title>
 
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<!--    custom style sheet below-->
+    <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
@@ -31,9 +34,9 @@
 <!--This is the jumbotron-->
 
 <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="display-6"><strong>Carl Hernandez</strong></h1>
-    </div>
+<!--    <div class="container align-text-bottom">-->
+        <h1 class="display-5 pl-4"><strong>Carl Hernandez</strong></h1>
+<!--    </div>-->
 </div>
 
 <!--This is the about me-->
@@ -148,15 +151,15 @@
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fa fa-pencil"></i></span>
+                        <span class="input-group-text"><i class="fa fa-comment"></i></span>
                     </div>
-                <textarea class="form-control" id="message" placeholder="Your Message" name="message" rows="5"></textarea>
+                <textarea class="form-control" id="message" maxlength="2000" placeholder="Your Message" name="message" rows="5"></textarea>
                 </div>
             </div>
         </div>
 
     </div>
-    <div class="row">
+    <div class="row pt-3 pb-5">
         <div class="col text-center">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
@@ -166,6 +169,9 @@
 
 <div id="output-area"></div>
 
+<div class="tex-center">
+    <p class="text-center">Copyright © Carl Hernandez 2020</p>
+</div>
 
 <!-- JS, Popper.js, and jQuery -->
 <script
