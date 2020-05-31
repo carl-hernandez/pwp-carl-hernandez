@@ -3,3 +3,16 @@
 	background-image: url('sunset-cropped.jpg');
 	/*background-size: cover ;*/
 }
+
+button {
+	background: rgb(255, 142, 60);
+	color: rgb(13, 13, 13);
+}
+
+div {
+	background: rgb(239, 240, 243);
+}
+
+nav {
+	background: rgb(239, 240, 243);
+}
