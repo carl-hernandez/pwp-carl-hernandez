@@ -11,10 +11,8 @@ const app = express()
 //project wide middleware declarations for Express
 app.use(morgan('dev'))
 app.use(express.json())
-app.use(bodyParser.urlencoded({entended:false}))
+app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
-
-const indexRoute = express.Router()
 
 const indexRoute = express.Router()
 
@@ -24,23 +22,25 @@ const indexRouteMiddleware = (request, response) => {
 
 const requestValidation =[
 	check('email', "A valid email is required").isEmail().normalizeEmail(),
-	check('name, "A name is required to send an email').not().isEmpty().trim().escape(),
-	check('subject').optional().trim().escape(),
+	check('name', "A name is required to send an email").not().isEmpty().trim().escape(),
+	check('subject',"subject is required").optional().trim().escape(),
 	check('message', 'A message is required to send email').not().isEmpty().trim().escape().isLength({max:2000})
 
 ]
 
 indexRoute.route('/apis')
 	.get(indexRouteMiddleware)
-	.post(requestValidation, (request, resposne) =>{
+	.post(requestValidation, (request, response) =>{
 		const errors = validationResult(request)
+
+		console.log(request.body)
 
 		if(!errors.isEmpty()) {
 			const currentError = errors.array()[0]
-			console.log(currentError.msg)
+			console.log(currentError)
 			return response.send(Buffer.from(`<div class ='alert alter-danger' role='alert><strong>Oh snap!</strong> ${currentError.msg}</div>`))
 		}
-		const {name, email, subjct, message} = request.body
+		const {name, email, subject, message} = request.body
 
 		const domain = process.env.MAILGUN_DOMAIN
 
@@ -64,7 +64,8 @@ indexRoute.route('/apis')
 		response.append('Access-Control-Allow-Origin', ['*'])
 		response.append('Content-Type', 'text/html')
 
-		return response.send(Buffer.from("<div class='alert alert-success' role='alert'>Email successfully sent.</div>))
+		return response.send(Buffer.from("<div class='alert alert-success' role='alert'>Email successfully sent.</div>"))
+
 	})
 app.use(indexRoute)
 

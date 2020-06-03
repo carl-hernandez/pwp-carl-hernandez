@@ -1,7 +1,7 @@
 {
   "name": "pwp-carl-hernandez",
   "version": "1.0.0",
-  "description": "contact form",
+  "description": "contact form for pwp-carl-hernandez",
   "main": "index.js",
   "scripts": {
     "dev": "node index.js"
