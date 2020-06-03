@@ -1,9 +1,10 @@
-require('dotenv').config()
+// require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
 const mailgun = require('mailgun-js')
 const bodyParser = require('body-parser')
 const {check, validationResult} = require('express-validator')
+const Recaptcha = require('express-recaptcha').RecaptchaV2
 
 //initializing express application
 const app = express()
@@ -13,6 +14,7 @@ app.use(morgan('dev'))
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
+const recaptcha = new Recaptcha(process.env.RECAPTCHA_SITE_KEY, process.env.RECAPTCHA_SECRET_KEY)
 
 const indexRoute = express.Router()
 
@@ -30,7 +32,12 @@ const requestValidation =[
 
 indexRoute.route('/apis')
 	.get(indexRouteMiddleware)
-	.post(requestValidation, (request, response) =>{
+	.post(recpatcha.middleware.verify, requestValidation, (request, response) =>{
+
+		if (request.recaptcha.error) {
+			return response.send(`<div class='alert alert-danger' role='alert'><strong>Oh snap!</strong>There was an error with Recaptcha</div>`)
+		}
+
 		const errors = validationResult(request)
 
 		console.log(request.body)
@@ -55,7 +62,7 @@ indexRoute.route('/apis')
 
 		mg.messages().send(mailgunData, (error) =>{
 			if (error) {
-				response.send(Buffer.from(`
+				return response.send(Buffer.from(`
 <div class='alert alter-danger' role='alert'><strong>Oh snap!</strong> Unable to send email error with email sender</div>`
 				))
 			}
