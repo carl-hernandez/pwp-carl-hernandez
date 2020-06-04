@@ -32,7 +32,7 @@ const requestValidation =[
 
 indexRoute.route('/apis')
 	.get(indexRouteMiddleware)
-	.post(recpatcha.middleware.verify, requestValidation, (request, response) =>{
+	.post(recaptcha.middleware.verify, requestValidation, (request, response) =>{
 
 		if (request.recaptcha.error) {
 			return response.send(`<div class='alert alert-danger' role='alert'><strong>Oh snap!</strong>There was an error with Recaptcha</div>`)
@@ -68,7 +68,7 @@ indexRoute.route('/apis')
 			}
 		})
 		// Line below commented out before hosting
-		response.append('Access-Control-Allow-Origin', ['*'])
+		// response.append('Access-Control-Allow-Origin', ['*'])
 		response.append('Content-Type', 'text/html')
 
 		return response.send(Buffer.from("<div class='alert alert-success' role='alert'>Email successfully sent.</div>"))
