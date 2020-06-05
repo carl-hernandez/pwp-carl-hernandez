@@ -56,7 +56,7 @@ indexRoute.route('/apis')
 		const mailgunData = {
 			to: process.env.MAIL_RECIPIENT,
 			from: `Mailgun Sandbox <postmaster@${domain}>`,
-			subject: `${name} - ${email}: ${subject}`,
+			subject: `${name} - ${email}`,
 			text: message
 		}
 
@@ -66,12 +66,13 @@ indexRoute.route('/apis')
 <div class='alert alter-danger' role='alert'><strong>Oh snap!</strong> Unable to send email error with email sender</div>`
 				))
 			}
+			return response.send(Buffer.from("<div class='alert alert-success' role='alert'>Email successfully sent.</div>"))
 		})
 		// Line below commented out before hosting
 		// response.append('Access-Control-Allow-Origin', ['*'])
 		response.append('Content-Type', 'text/html')
+// ^look at line above and ask for help on it ^
 
-		return response.send(Buffer.from("<div class='alert alert-success' role='alert'>Email successfully sent.</div>"))
 
 	})
 app.use(indexRoute)
