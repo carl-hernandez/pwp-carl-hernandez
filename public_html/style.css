@@ -5,7 +5,7 @@ header {
 	height: 400px;
 }
 
-button {
+.btn-primary, .btn-primary:hover, .btn-primary:visited, .btn-primary:active {
 	background: rgb(255, 142, 60);
 	color: rgb(13, 13, 13);
 }
